@@ -88,7 +88,8 @@ function renumberRows() {
 function updateDeleteButtons() {
     const rows = itemTableBody.rows;
     const canDelete = rows.length > 1;
-    rows.forEach(row => {
+    // 修正: HTMLCollectionを配列に変換してforEachを呼び出す
+    Array.from(rows).forEach(row => {
         const btn = row.querySelector('.delete-btn');
         if(btn) btn.disabled = !canDelete;
     });
